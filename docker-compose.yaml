@@ -1,0 +1,11 @@
+services:
+  api:
+    build: .
+    container_name: shorten_link
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/src/app
+    env_file:
+      - .env
+    command: 'sh -c "yarn install && yarn start"'
