@@ -4,10 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
     "start": "ts-node ./src/index.ts",
-    "dev": "ts-node-dev --ignore-watch node_modules ./src/index.ts",
-    "db:deploy": "npx prisma generate"
-
+    "dev": "ts-node-dev --ignore-watch node_modules ./src/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +15,7 @@
   "description": "",
   "dependencies": {
     "@prisma/client": "^6.7.0",
+    "@scalar/express-api-reference": "^0.7.5",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "@types/node": "^22.15.3",

@@ -81,6 +81,36 @@
   dependencies:
     "@prisma/debug" "6.7.0"
 
+"@scalar/core@0.2.15":
+  version "0.2.15"
+  resolved "https://registry.npmjs.org/@scalar/core/-/core-0.2.15.tgz"
+  integrity sha512-XTcagz6tPejMOHP3Ybh2q+6npt0A6FheGytGE0J44UEFBApVnoXUlX84kIGPi/l+AzHWbyJAcDV68VTl1cNSKw==
+  dependencies:
+    "@scalar/types" "0.1.15"
+
+"@scalar/express-api-reference@^0.7.5":
+  version "0.7.5"
+  resolved "https://registry.npmjs.org/@scalar/express-api-reference/-/express-api-reference-0.7.5.tgz"
+  integrity sha512-nI9Q9dnEasWLDYGuPjdAZV2NEDHiliMAw4KFSzj4rGkMMik37IHBPv/wQL/3YReaYS7XR8l/QdDAzRkYDh+c3w==
+  dependencies:
+    "@scalar/core" "0.2.15"
+
+"@scalar/openapi-types@0.2.3":
+  version "0.2.3"
+  resolved "https://registry.npmjs.org/@scalar/openapi-types/-/openapi-types-0.2.3.tgz"
+  integrity sha512-O1GwqLpcRc3GKXTbeBZ5E12fXR2ltpqGWk4RfhoN4ebKZsPVknV5at5425G97E1SwMy12BporRvn90k1Z+MruQ==
+  dependencies:
+    zod "3.24.1"
+
+"@scalar/types@0.1.15":
+  version "0.1.15"
+  resolved "https://registry.npmjs.org/@scalar/types/-/types-0.1.15.tgz"
+  integrity sha512-qb/kYWD7MKthL9flHEH/FPDgE3uWkkq8os9+M3CwyYMo2OpyXLbnzZ47LiCJ+hfdCx/hfIiSEOum2eNsYM8Lfg==
+  dependencies:
+    "@scalar/openapi-types" "0.2.3"
+    nanoid "^5.1.5"
+    zod "3.24.1"
+
 "@tsconfig/node10@^1.0.7":
   version "1.0.11"
   resolved "https://registry.npmjs.org/@tsconfig/node10/-/node10-1.0.11.tgz"
@@ -1106,3 +1136,8 @@ yn@3.1.1:
   version "3.1.1"
   resolved "https://registry.npmjs.org/yn/-/yn-3.1.1.tgz"
   integrity sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==
+
+zod@3.24.1:
+  version "3.24.1"
+  resolved "https://registry.npmjs.org/zod/-/zod-3.24.1.tgz"
+  integrity sha512-muH7gBL9sI1nciMZV67X5fTKKBLtwpZ5VBp1vsOQzj1MhrBZ4wlVCm3gedKZWLp0Oyel8sIGfeiz54Su+OVT+A==

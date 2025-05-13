@@ -13,6 +13,7 @@ interface UrlParams {
 type UrlRequest = Request & { body: UrlParams };
 
 class Url {
+  
   public static validateUrlParams(data: any): data is UrlParams {
     try {
       new URL(data.originalUrl);
@@ -35,7 +36,7 @@ class Url {
       const now = new Date();
       const expiresAt = new Date();
       expiresAt.setMinutes(now.getMinutes() + data.expirationTimeInMinutes);
-      await prisma.url.create({
+      const urlObject = await prisma.url.create({
         data: {
           originalUrl: data.originalUrl,
           shortUrl: shortUrl,
@@ -44,10 +45,11 @@ class Url {
         },
       });
       res.status(201).json({
-        msg: `Original URL: ${data.originalUrl} /////// Short URL:${shortUrl}`,
+        originalUrl: urlObject.originalUrl,
+        shortUrl: urlObject.shortUrl,
       });
     } catch (error) {
-      res.status(400).json({msg: 'error', error})
+      res.status(400).json({ msg: "error", error });
     }
   }
 
@@ -62,7 +64,7 @@ class Url {
       const now = new Date();
       const expiresAt = new Date();
       expiresAt.setMinutes(now.getMinutes() + data.expirationTimeInMinutes);
-      await prisma.url.create({
+      const urlObject = await prisma.url.create({
         data: {
           originalUrl: data.originalUrl,
           shortUrl: shortUrl,
@@ -71,10 +73,11 @@ class Url {
         },
       });
       res.status(201).json({
-        msg: `Original URL: ${data.originalUrl} /////// Short URL:${shortUrl}`,
+        originalUrl: urlObject.originalUrl,
+        shortUrl: urlObject.shortUrl,
       });
     } catch (error) {
-      console.log(error);
+      res.status(400).json({ msg: "error", error });
     }
   }
 
@@ -89,7 +92,7 @@ class Url {
       const now = new Date();
       const expiresAt = new Date();
       expiresAt.setMinutes(now.getMinutes() + data.expirationTimeInMinutes);
-      await prisma.url.create({
+      const urlObject = await prisma.url.create({
         data: {
           originalUrl: data.originalUrl,
           shortUrl: shortUrl,
@@ -98,9 +101,12 @@ class Url {
         },
       });
       res.status(201).json({
-        msg: `Original URL: ${data.originalUrl} /////// Short URL:${shortUrl}`,
+        originalUrl: urlObject.originalUrl,
+        shortUrl: urlObject.shortUrl,
       });
-    } catch (error) {}
+    } catch (error) {
+      res.status(400).json({ msg: "error", error });
+    }
   }
 
   static async createCustomUrl(req: Request, res: Response): Promise<any> {
@@ -108,7 +114,7 @@ class Url {
       const data = req.body;
       if (!Url.validateUrlParams(data)) {
         res.status(400).json({ msg: "A URL não está correta" });
-      }      
+      }
       const now = new Date();
       const expiresAt = new Date();
       expiresAt.setMinutes(now.getMinutes() + data.expirationTimeInMinutes);
@@ -120,7 +126,7 @@ class Url {
       if (url) {
         return res.status(400).json({ msg: "A URL customizada já existe." });
       } else {
-        await prisma.url.create({
+        const urlObject = await prisma.url.create({
           data: {
             originalUrl: data.originalUrl,
             shortUrl: data.customUrl,
@@ -128,11 +134,14 @@ class Url {
             expiresAt: expiresAt,
           },
         });
-        return res.status(201).json({
-          msg: `Original URL: ${data.originalUrl} /////// Short URL:${data.customUrl}`,
+        res.status(201).json({
+          originalUrl: urlObject.originalUrl,
+          shortUrl: urlObject.shortUrl,
         });
       }
-    } catch (error) {}
+    } catch (error) {
+      res.status(400).json({ msg: "error", error });
+    }
   }
 
   static async redirectUrl(req: Request, res: Response): Promise<any> {

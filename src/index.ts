@@ -1,7 +1,8 @@
-import Url from "./url";
+import Url from "./controllers/url";
 import express, { Request, Response} from "express";
 import cors from 'cors';
 import 'dotenv/config'
+import routes from "./routes/routes";
 
 //criar opção de link personalizavel
 //criar opção para remover do banco após periodo de tempo
@@ -16,9 +17,17 @@ import 'dotenv/config'
 //FAZER TESTES 
 //separar as pastas, rotas, controllers, etc
 //tirar o ts-node-dev do projeto quando finalizar o dockerfile
+//encontrar uma maneira melhor de retornar dois objetos de forma mais segura.
 
 
-//PROXIMO PROJETO COM WEBSOCKET = CONSUMIR ALGO E TRATAR ESSES DADOS
+
+//testar as rotas com valores inesperados
+//testar para dar errado
+//teste pra dar certo
+//test de integração 
+//usar cypress
+
+//PROXIMO PROJETO COM WEBSOCKET = CONSUMIR ALGO E TRATAR ESSES DADOS ( e se der usar IA(gemini 0800))
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -40,16 +49,7 @@ const corsOptions: cors.CorsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());
-
-app.get('/:shortUrl', Url.redirectUrl);
-app.post('/shorten/number', Url.createOnlyNumber)
-app.post('/shorten/letter', Url.createOnlyLetterUrl)
-app.post('/shorten', Url.createShortenUrl)
-app.post('/shorten/custom', Url.createCustomUrl)
-
-app.get('/', (req: Request, res: Response) => {
-    res.send('teste')
-})
+app.use(routes)
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta localhost:${PORT}`);
