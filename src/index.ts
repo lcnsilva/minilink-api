@@ -1,13 +1,15 @@
-import Url from "./controllers/url";
-import express, { Request, Response} from "express";
+import express from "express";
 import cors from 'cors';
 import 'dotenv/config'
 import routes from "./routes/routes";
+import { swaggerSpec } from './swagger';
+import swaggerUi from 'swagger-ui-express';
 
-//criar opção de link personalizavel
-//criar opção para remover do banco após periodo de tempo
-//criar opção para utilizar apenas numeros
-//criar opção para utilizar apenas letras
+
+//criar opção de link personalizavel - done
+//criar opção para remover do banco após periodo de tempo - done
+//criar opção para utilizar apenas numeros - done
+//criar opção para utilizar apenas letras - done 
 //criar pagina de notfound (e talvez link expirado)
 //estudar possibilidade de mudar a lógica de delete para softdelete(active/disabled)
 //estudar possibilidade de usar o redis
@@ -18,7 +20,8 @@ import routes from "./routes/routes";
 //separar as pastas, rotas, controllers, etc
 //tirar o ts-node-dev do projeto quando finalizar o dockerfile
 //encontrar uma maneira melhor de retornar dois objetos de forma mais segura.
-
+//criar validação do expirationInMinutes para recusar valores não setados.
+//criar um aviso na url customizada que o link é público e qualquer um pode acessar.
 
 
 //testar as rotas com valores inesperados
@@ -26,6 +29,8 @@ import routes from "./routes/routes";
 //teste pra dar certo
 //test de integração 
 //usar cypress
+
+//testar todos os métodos com o jest+supertest
 
 //PROXIMO PROJETO COM WEBSOCKET = CONSUMIR ALGO E TRATAR ESSES DADOS ( e se der usar IA(gemini 0800))
 
@@ -50,6 +55,7 @@ const corsOptions: cors.CorsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(routes)
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta localhost:${PORT}`);

@@ -13,7 +13,7 @@ interface UrlParams {
 type UrlRequest = Request & { body: UrlParams };
 
 class Url {
-  
+
   public static validateUrlParams(data: any): data is UrlParams {
     try {
       new URL(data.originalUrl);
@@ -124,7 +124,7 @@ class Url {
         },
       });
       if (url) {
-        return res.status(400).json({ msg: "A URL customizada já existe." });
+        return res.status(409).json({ msg: "A URL customizada já existe." });
       } else {
         const urlObject = await prisma.url.create({
           data: {
@@ -152,9 +152,9 @@ class Url {
       },
     });
     if (url) {
-      return res.redirect(url.originalUrl);
+      return res.status(302).redirect(url.originalUrl);
     } else {
-      return res.status(404).json({ msg: "Url not found" });
+      return res.status(404).json({ msg: "A URL não foi encontrada." });
     }
   }
 }
