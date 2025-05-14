@@ -5,33 +5,21 @@ import routes from "./routes/routes";
 import { swaggerSpec } from './swagger';
 import swaggerUi from 'swagger-ui-express';
 
-
-//criar opção de link personalizavel - done
-//criar opção para remover do banco após periodo de tempo - done
-//criar opção para utilizar apenas numeros - done
-//criar opção para utilizar apenas letras - done 
 //criar pagina de notfound (e talvez link expirado)
 //estudar possibilidade de mudar a lógica de delete para softdelete(active/disabled)
 //estudar possibilidade de usar o redis
-
 //URGENTE: ajustar as validações da entrada de dados nos posts.
 //ver também se rotas diferentes é a melhor forma de separar entre onlyletters e onlynumbers
 //FAZER TESTES 
-//separar as pastas, rotas, controllers, etc
-//tirar o ts-node-dev do projeto quando finalizar o dockerfile
 //encontrar uma maneira melhor de retornar dois objetos de forma mais segura.
 //criar validação do expirationInMinutes para recusar valores não setados.
 //criar um aviso na url customizada que o link é público e qualquer um pode acessar.
-
-
 //testar as rotas com valores inesperados
 //testar para dar errado
 //teste pra dar certo
 //test de integração 
 //usar cypress
-
 //testar todos os métodos com o jest+supertest
-
 //PROXIMO PROJETO COM WEBSOCKET = CONSUMIR ALGO E TRATAR ESSES DADOS ( e se der usar IA(gemini 0800))
 
 const PORT = process.env.PORT || 3000;
@@ -39,7 +27,8 @@ const app = express();
 
 const allowedOrigins : string[] = [
     'http://localhost:5173',
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'http://localhost:5174/'
 ]
 
 const corsOptions: cors.CorsOptions = {

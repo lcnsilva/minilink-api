@@ -20,4 +20,5 @@ model Url {
   shortUrl    String @unique
   createdAt   DateTime @default(now())
   expiresAt   DateTime
+  clickAmount Int @default(0)
 }

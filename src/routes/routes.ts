@@ -148,6 +148,20 @@ routes.post('/shorten', Url.createShortenUrl)
  *       409:
  *          description: A URL customizada já existe.
  */
-routes.post('/shorten/custom', Url.createCustomUrl)
+routes.post('/shorten/custom', Url.createCustomUrl);
+
+/**
+ * @swagger
+ * /api/clicks:
+ *   get:
+ *      summary: Retorna todas as URLs encurtadas organizadas por maior quantidade de cliques.
+ *      tags: [URL]
+ *      responses:
+ *          200:
+ *              description: Lista de links ordenada.
+ *          404:
+ *              description: Não existe nenhuma URL encurtada no banco de dados.
+ */
+routes.get('/api/clicks', Url.getUrlClickRank);
 
 export default routes

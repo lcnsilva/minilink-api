@@ -10,6 +10,12 @@ interface UrlParams {
   customUrl?: string;
 }
 
+interface UrlReturnObject{
+  originalUrl: string,
+  shortUrl: string,
+  clickAmount?: number;
+}
+
 type UrlRequest = Request & { body: UrlParams };
 
 class Url {
@@ -44,6 +50,7 @@ class Url {
           expiresAt: expiresAt,
         },
       });
+      
       res.status(201).json({
         originalUrl: urlObject.originalUrl,
         shortUrl: urlObject.shortUrl,
@@ -152,9 +159,38 @@ class Url {
       },
     });
     if (url) {
+      await prisma.url.update({
+      where: {
+        shortUrl: shortUrl
+      }, data: {
+        clickAmount: {increment: 1}
+      }
+    })
       return res.status(302).redirect(url.originalUrl);
     } else {
       return res.status(404).json({ msg: "A URL não foi encontrada." });
+    }
+  }
+
+  static async getUrlClickRank(req: Request, res: Response): Promise<any>{
+    try {
+      const UrlList = await prisma.url.findMany({
+        orderBy:{
+          clickAmount: 'desc'
+        }
+      })
+      const UrlObject: UrlReturnObject[] = UrlList.map(url => ({
+        originalUrl: url.originalUrl,
+        shortUrl: url.shortUrl,
+        clickAmount: url.clickAmount,
+      }));
+      if(UrlObject){
+        return res.status(200).json({UrlObject});
+      } else {
+        return res.status(404).json({msg: "Não foi encontrada nenhuma URL."});
+      }
+    } catch (error) {
+      return res.status(400).json({msg: "Bad request", error});
     }
   }
 }
