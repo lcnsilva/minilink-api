@@ -168,7 +168,11 @@ class Url {
     })
       return res.status(302).redirect(url.originalUrl);
     } else {
-      return res.status(404).json({ msg: "A URL não foi encontrada." });
+      if(process.env.REDIRECT_URL){
+        return res.status(302).redirect(process.env.REDIRECT_URL)
+      } else {
+        return res.status(404).json({ msg: "A URL não foi encontrada." });
+      }
     }
   }
 

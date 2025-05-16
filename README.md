@@ -160,6 +160,7 @@ Crie um arquivo `.env` com as seguintes variáveis:
 ```env
 DATABASE_URL="String de conexão do MongoDB"
 PORT = 3000
+REDIRECT_URL="URL para página notfound"
 ```
 
 ---
