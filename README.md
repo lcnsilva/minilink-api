@@ -1,14 +1,21 @@
 [JAVASCRIPT__BADGE]: https://img.shields.io/badge/Javascript-000?style=for-the-badge&logo=javascript
 [TYPESCRIPT__BADGE]: https://img.shields.io/badge/typescript-D4FAFF?style=for-the-badge&logo=typescript
-[REACT__BADGE]: https://img.shields.io/badge/React-005CFE?style=for-the-badge&logo=react
 [AXIOS__BADGE]: https://img.shields.io/badge/axios.js-854195?style=for-the-badge&logo=axios&logoColor=5A29E4
+[MONGODB__BADGE]:https://img.shields.io/badge/MongoDB-%234ea94b.svg?logo=mongodb&logoColor=white
+[PRISMA__BADGE]: https://img.shields.io/badge/Prisma-2D3748?logo=prisma&logoColor=white
+[EXPRESS__BADGE]:https://img.shields.io/badge/Express.js-%23404d59.svg?logo=express&logoColor=%2361DAFB
+[NODEJS__BADGE]:https://img.shields.io/badge/Node.js-6DA55F?logo=node.js&logoColor=white
+
 
 <h1 align="center" style="font-weight: bold;">Minilink API🔗</h1>
 
-![react][REACT__BADGE]
 ![javascript][JAVASCRIPT__BADGE]
 ![typescript][TYPESCRIPT__BADGE]
 ![axios][AXIOS__BADGE]
+![PRISMA][PRISMA__BADGE]
+![MongoDB][MONGODB__BADGE]
+![Express][EXPRESS__BADGE]
+![NodeJS][NODEJS__BADGE]
 
 <br/>
 
