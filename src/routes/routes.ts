@@ -164,4 +164,8 @@ routes.post('/shorten/custom', Url.createCustomUrl);
  */
 routes.get('/api/clicks', Url.getUrlClickRank);
 
+routes.get('/', (req: Request, res: Response) => {
+    res.send("Welcome to Minilink API");
+})
+
 export default routes
