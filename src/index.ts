@@ -20,6 +20,7 @@ import swaggerUi from 'swagger-ui-express';
 //test de integração 
 //usar cypress
 //testar todos os métodos com o jest+supertest
+//colocar favicon
 //PROXIMO PROJETO COM WEBSOCKET = CONSUMIR ALGO E TRATAR ESSES DADOS ( e se der usar IA(gemini 0800))
 
 const PORT = process.env.PORT || 3000;
