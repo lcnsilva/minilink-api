@@ -69,6 +69,37 @@ npm start
 
 ---
 
+## 🐳 Rodando com Docker
+
+Você pode executar a API localmente usando Docker e Docker Compose. Siga os passos abaixo:
+
+### Pré-requisitos
+
+- [Docker](https://www.docker.com/get-started) instalado
+- [Docker Compose](https://docs.docker.com/compose/install/) instalado
+
+### Passos
+
+1. **Clone o repositório:**
+
+   ```bash
+   git clone https://github.com/lcnsilva/minilink-api.git
+   cd minilink-ap
+   ```
+
+2. **Crie o arquivo.env:**
+    ```bash
+    PORT=3000;
+    DATABASE_URL="Sua string de conexão do MongoDB"
+    REDIRECT_URL="URL para redirecionamento customizado caso o link não seja encontrado"
+    ```
+3. **Construa e suba os containers:**
+    ```bash
+    docker-compose up --build
+    ```
+
+
+---
 ## 💻 Tecnologias Utilizadas
 - Node.js;
 - TypeScript;
